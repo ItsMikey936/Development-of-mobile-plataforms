@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GitFlightApp.Pages.FlightsPage"
+             xmlns:models="clr-namespace:GitFlightApp.Models"
+             Title="FlightsPage">
+    <ScrollView>
+    <VerticalStackLayout>
+        <Label 
+            Text="Aviable Flights"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+            <CollectionView ItemsSource="{x:Static models:GlobalData.Flights}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10"
+                                Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding FlightNumber}" FontAttributes="Bold" />
+                                <Label Text="{Binding DepartureDate, StringFormat='{0:dd/MM/yyyy}'}" />
+                                <Label Text="{Binding Price, StringFormat='Price: {0:C}'}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+            <Button Text="Add New Flight"
+                    VerticalOptions="End"
+                    Margin="0, 10, 0, 0"
+                    Clicked="OnAddNewFlight"></Button>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
